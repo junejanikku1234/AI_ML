@@ -161,7 +161,7 @@ with tab3:
     st.write(
         """
         This is the *'why'*. The models confirmed my hypotheses. Both models
-        agreed on the top 3 most important features:
+        agreed on the top important features:
         """
     )
     
