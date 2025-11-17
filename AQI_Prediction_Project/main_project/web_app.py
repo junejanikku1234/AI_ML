@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from PIL import Image # PIL is used to open images
+import os
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # -----------------------------------------------------------------
 # PAGE CONFIG
@@ -65,7 +67,7 @@ with tab1:
         """
     )
     try:
-        img = Image.open('AQI_7_Day_Moving_Average.png')
+        img = Image.open(os.path.join(SCRIPT_DIR, 'AQI_7_Day_Moving_Average.png'))
         st.image(img, caption='7-Day Moving Average of AQI Over Time')
     except FileNotFoundError:
         st.warning("Image 'your_tableau_seasonal_plot.png' not found.")
@@ -80,7 +82,7 @@ with tab1:
         """
     )
     try:
-        img = Image.open('histograms_collage.png')
+        img = os.path.join(SCRIPT_DIR, 'histograms_collage.png')
         st.image(img, caption='Histograms of all pollutant features')
     except FileNotFoundError:
         st.warning("Image 'histogramz_collage.png' not found.")
@@ -104,7 +106,7 @@ with tab2:
         """
     )
     try:
-        img = Image.open('correlation_heatmap.png')
+        img = os.path.join(SCRIPT_DIR, 'correlation_heatmap.png')
         st.image(img, caption=' Correlation Heatmap of Pollutants')
     except FileNotFoundError:
         st.warning("Image 'correlation_heatmap.png' not found.")
@@ -168,13 +170,13 @@ with tab3:
     # --- ADD YOUR IMPORTANCE PLOTS ---
     col1, col2 = st.columns(2)
     try:
-        img_rf = Image.open('random_forest_feature_importance.png')
+        img_rf = os.path.join(SCRIPT_DIR, 'random_forest_feature_importance.png')
         col1.image(img_rf, caption='Random Forest Importance')
     except FileNotFoundError:
         col1.warning("Image 'random_forest_feature_importance.png' not found.")
     
     try:
-        img_xgb = Image.open('xgboost_feature_importance.png')
+        img_xgb = os.path.join(SCRIPT_DIR, 'xgboost_feature_importance.png')
         col2.image(img_xgb, caption='XGBoost Importance')
     except FileNotFoundError:
         col2.warning("Image 'xgboost_feature_importance.png' not found.")
